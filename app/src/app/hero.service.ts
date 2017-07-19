@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Hero } from './hero';
-import { Gu } from './Gu';
+import { Gu } from './gu';
 import { HEROES, GUES } from './mock-heroes';
 
 @Injectable()

@@ -7,7 +7,8 @@ import { AppComponent }  from './app.component';
 import { HeroesComponent }  from './heroes.component';
 import { HeroDetailComponent } from './hero-detail.component';
 import { DashboardComponent } from './dashboard.component';
-import { GListComponent} from './g-list.component'
+import { GListComponent} from './g-list.component';
+import {QuickSearchComponent} from './quick-search.component';
 
 import { HeroService } from './hero.service';
 
@@ -30,7 +31,8 @@ import { InMemoryDataService }  from './in-memory-data.service';
     HeroDetailComponent,
     HeroesComponent,
     DashboardComponent,
-    GListComponent
+    GListComponent,
+    QuickSearchComponent
    ],
    providers: [HeroService],
    bootstrap: [ AppComponent ]

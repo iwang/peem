@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'my-app',
   styleUrls: ['./app.component.css'],
@@ -10,6 +11,7 @@ import { Component } from '@angular/core';
     <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
     <a routerLink="/glist">List</a>
   <nav>
+  <quick-search></quick-search>
   <router-outlet></router-outlet>
   `
 })

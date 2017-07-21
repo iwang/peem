@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
+import { HeroService } from './hero.service';
 
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
@@ -9,14 +10,14 @@ import {Gu} from './gu';
 @Component({
   selector: 'quick-search',
   template: `<md-input-container>
-  <input mdInput placeholder="State" [mdAutocomplete]="auto" [formControl]="stateCtrl">
-</md-input-container>
+      <input mdInput placeholder="State" [mdAutocomplete]="auto" [formControl]="stateCtrl">
+    </md-input-container>
 
-<md-autocomplete #auto="mdAutocomplete">
-  <md-option *ngFor="let state of filteredStates | async" [value]="state">
-    {{ state }}
-  </md-option>
-</md-autocomplete>`
+    <md-autocomplete #auto="mdAutocomplete">
+      <md-option *ngFor="let state of filteredStates | async" [value]="state">
+        {{ state }}
+      </md-option>
+    </md-autocomplete>`
 })
 
 export class QuickSearchComponent {
@@ -76,12 +77,17 @@ export class QuickSearchComponent {
     'Wyoming',
   ];
 
-  constructor() {
+  constructor(private heroService: HeroService) {
     this.stateCtrl = new FormControl();
     this.filteredStates = this.stateCtrl.valueChanges
         .startWith(null)
         .map(name => this.filterStates(name));
+
+    this.stateCtrl.valueChanges.subscribe(value => {
+      heroService.getGues().then(heros => console.log(heros))
+    })
   }
+
 
   filterStates(val: string) {
     return val ? this.states.filter(s => s.toLowerCase().indexOf(val.toLowerCase()) === 0)

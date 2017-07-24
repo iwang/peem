@@ -22,10 +22,11 @@ export class HeroService {
     then(heroes => heroes.find(hero => hero.id === id))
   }
 
-  getGues():Promise<Gu[]> {
+  getGues(name):Promise<Gu[]> {
+    console.log("sending requesta", name);
     return this.http.get(this.guesUrl)
             .toPromise()
-            .then(response => response.json().datea as Gu[])
+            .then(response => response.json().data as Gu[])
             .catch(this.handleError);
   }
 

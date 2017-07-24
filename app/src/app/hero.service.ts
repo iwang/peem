@@ -22,11 +22,12 @@ export class HeroService {
     then(heroes => heroes.find(hero => hero.id === id))
   }
 
-  getGues(name):Promise<Gu[]> {
-    console.log("sending requesta", name);
+  getGues(name:string):Promise<Gu[]> {
+    console.log("sending request", name);
     return this.http.get(this.guesUrl)
             .toPromise()
-            .then(response => response.json().data as Gu[])
+            .then(response => {return (response.json().data as Gu[]).
+                                    filter(gu => gu.name.toLowerCase().indexOf(name.toLowerCase()) !== -1)})
             .catch(this.handleError);
   }
 

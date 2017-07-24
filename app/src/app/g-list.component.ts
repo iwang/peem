@@ -14,7 +14,6 @@ export class GListComponent implements OnInit{
   constructor(private heroService: HeroService) { }
 
   ngOnInit(): void {
-    this.heroService.getGues()
-      .then(gues => this.gues = gues);
+    //this.heroService.getGues().then(gues => this.gues = gues);
   }
 }

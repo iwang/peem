@@ -19,21 +19,24 @@ import { AppRoutingModule }  from './app-routing.module';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 
-import {MdAutocompleteModule} from '@angular/material';
-import {MdInputModule} from '@angular/material';
+import {MdAutocompleteModule, MdInputModule, MdDialog, MdDialogRef} from '@angular/material';
 import { ReactiveFormsModule} from '@angular/forms';
+
+import {FavorAddComponent} from './favor/favor-add.component'
 
 @NgModule({
   imports:      [ 
     BrowserModule,
     FormsModule,
     HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    //InMemoryWebApiModule.forRoot(InMemoryDataService),
     AppRoutingModule,
     BrowserAnimationsModule,
     MdAutocompleteModule,
     MdInputModule,
-    ReactiveFormsModule
+    MdDialog,
+    MdDialogRef
+    ReactiveFormsModule,
   ],
   declarations: [ 
     AppComponent,
@@ -41,7 +44,8 @@ import { ReactiveFormsModule} from '@angular/forms';
     HeroesComponent,
     DashboardComponent,
     GListComponent,
-    QuickSearchComponent
+    QuickSearchComponent,
+    FavorAddComponent
    ],
    providers: [HeroService],
    bootstrap: [ AppComponent ]

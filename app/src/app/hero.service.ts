@@ -9,7 +9,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class HeroService {
-  private guesUrl = 'api/gues';
+  private guesUrl = 'http://localhost:5000/stocks';
 
   constructor(private http:Http) {}
 
@@ -24,10 +24,9 @@ export class HeroService {
 
   getGues(name:string):Promise<Gu[]> {
     console.log("sending request", name);
-    return this.http.get(this.guesUrl)
+    return this.http.get(this.guesUrl + "?key=" + name)
             .toPromise()
-            .then(response => {return (response.json().data as Gu[]).
-                                    filter(gu => gu.name.toLowerCase().indexOf(name.toLowerCase()) !== -1)})
+            .then(response => {return response.json() as Gu[]})
             .catch(this.handleError);
   }
 

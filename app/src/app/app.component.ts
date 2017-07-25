@@ -12,6 +12,7 @@ import { Component } from '@angular/core';
     <a routerLink="/glist">List</a>
   <nav>
   <quick-search></quick-search>
+  <favor-add></favor-add>
   <router-outlet></router-outlet>
   `
 })
